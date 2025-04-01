@@ -7,25 +7,28 @@
 
 //==============================================================================
 // Headers
+//==============================================================================
+
 #include <projectHeader.h>
 #include <kPin.h>
-//==============================================================================
 
 
 //==============================================================================
 // Globals
-t_kEvent kPinBuffer;
 //==============================================================================
+
+t_kEvent kPinBuffer;
 
 
 //==============================================================================
 // Headers
+//==============================================================================
+
 #include <system.h>
-//==============================================================================
 
 
 //==============================================================================
-// pulsador dc
+// Maneja un pin: pulsador conectado a dc.
 // Recibe:
 // - char pi: kPinAlias. Constante que toma valores de 0..(K_PIN_CANT-1). Normal
 // mente se invocará utilizando el nombre del pulsador (segun definicion kPin_al
@@ -66,11 +69,10 @@ void kPin_driverDc(char pi, char kCurrLogState)
 
 
 //==============================================================================
-// FUNCTION: pulsador_dc_driver()
-// COMENTARIO:
-//FGR IN_FN (USADO PARA DISPARAR ENTRADA)
-//FGR: VERSION COMPATIBLE CON AC/DC
+// Version compatible con AC/DC. Para flanco negativo.
+// IN_FN (USADO PARA DISPARAR ENTRADA)
 //==============================================================================
+
 void kPin_driverAcFn(char pi, char flanco, char kCurrLogState)
     {
     if(kPin[pi].timer)
@@ -95,9 +97,10 @@ void kPin_driverAcFn(char pi, char flanco, char kCurrLogState)
 
 
 //==============================================================================
+// Version compatible con AC/DC. Para flanco positivo.
 //FGR IN_FP (USADO PARA DISPARAR ENTRADA)
-//FGR: VERSION COMPATIBLE CON AC/DC
 //==============================================================================
+
 void kPin_driverAcFp(char pi, char flanco, char kCurrLogState)
     {
     if(kPin[pi].timer)
