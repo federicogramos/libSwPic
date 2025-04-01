@@ -1,38 +1,38 @@
 //==============================================================================
-// ARCHIVO: kPin.c
-// AUTOR: Federico Ramos
-// ULT. MODIF: 03-11-2023
+// Archivo: kPin.c
+// Autor: Federico Ramos
+// Modificado: 20250401 1653
 //==============================================================================
 
 
 //==============================================================================
-// INCLUDE
+// Headers
 #include <projectHeader.h>
 #include <kPin.h>
 //==============================================================================
 
 
 //==============================================================================
-// DEFINICION DE VARIABLES GLOBALES
+// Globals
 t_kEvent kPinBuffer;
 //==============================================================================
 
 
 //==============================================================================
-// INCLUDE
+// Headers
 #include <system.h>
 //==============================================================================
 
 
 //==============================================================================
-// FUNCTION: kPin_driverDc()
+// pulsador dc
 // Recibe:
-//    - char pi: kPinAlias. Constante que toma valores de 0..(K_PIN_CANT-1). Nor
-//      malmente se invocará utilizando el nombre del pulsador (segun definicion
-//      kPin_aliases.h/e_kPinAlias)
-//    - char kCurrLogState: K_i
-// COMENTARIO: pulsador dc
+// - char pi: kPinAlias. Constante que toma valores de 0..(K_PIN_CANT-1). Normal
+// mente se invocarÃ¡ utilizando el nombre del pulsador (segun definicion kPin_al
+// iases.h/e_kPinAlias).
+// - char kCurrLogState: K_i
 //==============================================================================
+
 void kPin_driverDc(char pi, char kCurrLogState)
     {
     if(kPin[pi].timer) kPin[pi].timer--;
@@ -46,7 +46,7 @@ void kPin_driverDc(char pi, char kCurrLogState)
             kPinBuffer.flanco = FLANCO_P;
             kPin[pi].timer = KPIN__N_ANTIREBOTE;// Importantisimo: estos siguien
             // tes 2 renglones, si bien son comunes a ambos, no se deben sacar c
-            // omo factor común porque si lo hago y uso kPinBuffer.flag para dis
+            // omo factor comï¿½n porque si lo hago y uso kPinBuffer.flag para dis
             // tinguirlos, se confunde el driver en el momento en que aprietan o
             // tro boton (kPinBuffer.flag accionado por otro) y entonces funcion
             // a mal (mucho tiempo para darme cuenta).
