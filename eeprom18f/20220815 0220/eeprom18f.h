@@ -8,6 +8,7 @@
 // Cómo debe usarse esta librería. Archivos que debe crear el usuario para defin
 // ir características (crear dentro del directorio del proyecto):
 // - eeprom_18f_memMap.h (ver "/libSwPic/eeprom18f/sample_eeprom18f_memMap.h")
+// - sample_eeprom18f_memInit.h (ver "sample_..")
 //==============================================================================
 
 
