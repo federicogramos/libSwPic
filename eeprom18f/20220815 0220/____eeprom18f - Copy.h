@@ -7,7 +7,7 @@
 //
 // Cómo debe usarse esta librería. Archivos que debe crear el usuario para defin
 // ir características (crear dentro del directorio del proyecto):
-// - eeprom_18f_memMap.h (ver "/libSwPic/eeprom18f/sample_eeprom18f_memMap.h")
+// - eeprom_18f_reserva.h
 //==============================================================================
 
 
@@ -69,6 +69,22 @@
     var |= (long)eeprom_read(addr + 2) << (8 * 1);                             \
     var |= (long)eeprom_read(addr + 3) << (8 * 0);                             \
     }
+
+
+// Mapa de memoria de eeprom ===================================================
+// Esto lo debo pasar a un archivo dentro del proyecto particular.
+//==============================================================================
+
+#define EEADDR_BRILLO_MEM 0
+#define EEADDR_ADV_MODE_MEM 1
+#define EEADDR_XLO_MEM 2
+#define EEADDR_XUP_MEM 4
+#define EEADDR_ELO_MEM 6
+#define EEADDR_EUP_MEM 8
+#define EEADDR_VLO_MEM 10
+#define EEADDR_VUP_MEM 12
+#define EEADDR_ESC_ENT_MEM 14
+#define EEADDR_ESC_DEC_MEM 16
 
 
 // Declaración de funciones ====================================================
