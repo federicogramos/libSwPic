@@ -1,55 +1,64 @@
-//==============================================================================
-// Archivo: / libSwPic/eeprom_18f.c
-// Autor: Federico Ramos
-// Modificado:  20250204 0116
-//==============================================================================
+/*
+ * @file / libSwPic/eeprom_18f.c
+ * @author Federico Ramos <federico.g.ramos@gmail.com>
+ * @version  20250204 0116
+ */
 
 
-// Headers =====================================================================
-//==============================================================================
-
+/*
+ * Headers
+ */
 #include <projectHeader.h>
 #include <eeprom18f.h>
 
-// Archivos que debe crear el usuario ==========================================
-// Objetivo: diseñar mapa de memoria.
-// Nota: se pone aqui porque dentro de "eeprom_18f_lib.h" duplica reserva.
-//==============================================================================
 
-//#include <eeprom_18f_reserva.h>
+/*
+ * @note Archivos que debe crear el usuario ====================================
+ * Objetivo: diseñar mapa de memoria.
+ * @warning Se pone aqui porque dentro de "eeprom_18f_lib.h" duplica reserva.
+ * @warning Filename "eeprom_18f_reserva.h"  not used anymore.
+*/
 #include <eeprom18f_memMap.h>
 
 
 
-//==============================================================================
-//==============================================================================
-
-void ee_write_byte(unsigned char address, unsigned char _data)
+/*
+ * @brief Write one byte de la eeprom.
+ * @param addr = direccion a escribir.
+ * @param dat = dato a escribir.
+ */
+void ee_write_byte(unsigned char addr, unsigned char dat)
     {
-    EEDATA = _data;
-    EEADR = address;
-    // start write sequence as described in datasheet, page 91
+    EEDATA = dat;
+    EEADR = addr;
+
+    // Start write sequence as described in datasheet, page 91.
     EECON1bits.EEPGD = 0;
     EECON1bits.CFGS = 0;
-    EECON1bits.WREN = 1; // enable writes to data EEPROM
-    INTCONbits.GIE = 0;  // disable interrupts
+    EECON1bits.WREN = 1;// Enable writes to data EEPROM.
+    INTCONbits.GIE = 0;// Disable interrupts.
     EECON2 = 0x55;
     EECON2 = 0x0AA;
-    EECON1bits.WR = 1;   // start writing
+    EECON1bits.WR = 1;// Start writing.
     while(EECON1bits.WR) asm("nop");
     //if(EECON1bits.WRERR) printf("ERROR: writing to EEPROM failed!n");
     EECON1bits.WREN = 0;
-    INTCONbits.GIE = 1;  // enable interrupts
+    INTCONbits.GIE = 1;// Enable interrupts.
     }
 
-//==============================================================================
-//==============================================================================
 
-unsigned char ee_read_byte(unsigned char address)
+/*
+ * @brief Read one byte de la eeprom.
+ * @param addr = direccion a leer.
+ * @return Read byte.
+ */
+unsigned char ee_read_byte(unsigned char addr)
     {
-    EEADR = address;
+    EEADR = addr;
     EECON1bits.CFGS = 0;
     EECON1bits.EEPGD = 0;
     EECON1bits.RD = 1;
     return EEDATA;
     }
+    
+    
