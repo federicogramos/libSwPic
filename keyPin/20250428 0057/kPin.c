@@ -35,8 +35,7 @@ t_kEvent kPinBuffer;
 // iases.h/e_kPinAlias).
 // - char kCurrLogState: K_i
 //==============================================================================
-//pi = index del kpin
-// kCurrLogState va a estar dado por el GPIO_RAW
+
 void kPin_driverDc(char pi, char kCurrLogState)
     {
     if(kPin[pi].timer) kPin[pi].timer--;
