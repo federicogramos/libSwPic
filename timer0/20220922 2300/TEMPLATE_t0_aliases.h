@@ -3,23 +3,23 @@
 //******************************************************************************
 
 
-#ifndef __TIMER_ALIASES_H
-#define __TIMER_ALIASES_H
+#ifndef __T0_ALIASES_H
+#define __T0_ALIASES_H
 
 
 //******************************************************************************
 // ALIAS
-enum e_timer
+enum e_t0
     {
-    TMR_RETURN,
-    TMR_PULSADO_LARGO_HOLD,
-    TMR_PULSADO_LARGO_SILENT,
-    TMR_7SEG_SCROLL,
-    TMP_11_XXXV_FALLA,
-    TMR_VENTANA,
-    TMR_ZERO,
-    CANT_TIMERS
+    T0_RETURN,
+    T0_PULSADO_LARGO_HOLD,
+    T0_PULSADO_LARGO_SILENT,
+    T0_7SEG_SCROLL,
+    T0_11_XXXV_FALLA,
+    T0_VENTANA,
+    T0_ZERO,
+    T0_CANT
     };
 
 
-#endif//__TIMER_ALIASES_H
+#endif//__T0_ALIASES_H

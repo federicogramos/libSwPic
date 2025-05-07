@@ -3,14 +3,14 @@
 //******************************************************************************
 
 
-#ifndef __TIMER_DELAYS_H
-#define __TIMER_DELAYS_H
+#ifndef __T0_DELAYS_H
+#define __T0_DELAYS_H
 
 
 //******************************************************************************
 // DEFINICION DE TIEMPOS POR PARTE DEL USUARIO
 //******************************************************************************
-type_timerDelayConstant timerDelayConstant[CANT_TIMERS]=
+type_t0DelayConstant t0DelayConstant[T0_CANT]=
 	{
 	40,
 	16,
@@ -22,4 +22,4 @@ type_timerDelayConstant timerDelayConstant[CANT_TIMERS]=
 	};
 
 
-#endif//__TIMER_DELAYS_H
+#endif//__T0_DELAYS_H
