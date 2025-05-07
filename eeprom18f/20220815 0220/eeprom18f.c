@@ -12,15 +12,6 @@
 #include <eeprom18f.h>
 
 
-/*
- * @note Archivos que debe crear el usuario ====================================
- * Objetivo: diseñar mapa de memoria.
- * @warning Se pone aqui porque dentro de "eeprom_18f_lib.h" duplica reserva.
- * @warning Filename "eeprom_18f_reserva.h"  not used anymore.
-*/
-#include <eeprom18f_memMap.h>
-
-
 
 /*
  * @brief Write one byte de la eeprom.
