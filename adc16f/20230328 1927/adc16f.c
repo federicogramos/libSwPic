@@ -1,24 +1,10 @@
-//******************************************************************************
-//
-// archivo: adc16f.c
-// autor: Federico Ramos
-// modificado: 2022-10-13
-//
-// En este archivo:
-// - INCLUDES
-// - DEFINICIÓN DE VARIABLES GLOBALES
-// - DEFINICIÓN DE FUNCIONES
-//      o Función: adc16f_driver()
-//      o Función: adc16f_isr()
-//      o Función: adc16f_getConv()
-//
-//******************************************************************************
+/**
+ * @file / libSwPic/adc16f/adc16f.c
+ * @author Federico Ramos <federico.g.ramos@gmail.com>
+ * @version  20250702 1721
+ =============================================================================*/
 
-
-
-//******************************************************************************
-// INCLUDES
-
+ 
 #include <projectHeader.h>
 #include <adc16f_lib.h>
 
@@ -27,7 +13,7 @@
 
 
 //******************************************************************************
-// DEFINICIÓN DE VARIABLES GLOBALES
+// DEFINICIï¿½N DE VARIABLES GLOBALES
 
 adc16f_struct adc16f_t;
 
@@ -37,17 +23,17 @@ adc16f_struct adc16f_t;
 
 //******************************************************************************
 //
-// Función: adc16f_driver()
+// Funciï¿½n: adc16f_driver()
 //
-// Esta función se ubica fuera de las interrupciones, idealmente en un loop
-// periódico de programa.
+// Esta funciï¿½n se ubica fuera de las interrupciones, idealmente en un loop
+// periï¿½dico de programa.
 //
 // Inicia conversiones. Administra los distintos canales del ADC para que se
 // vayan procesando sus conversiones.
 //
-// Cada vez que corre la función, inicia una conversión. No inicia si:
+// Cada vez que corre la funciï¿½n, inicia una conversiï¿½n. No inicia si:
 // - hay conversion pendiente para leer en el buffer
-// - está haciendo una conversión que aún no finalizó
+// - estï¿½ haciendo una conversiï¿½n que aï¿½n no finalizï¿½
 //
 //******************************************************************************
 
@@ -57,7 +43,7 @@ void adc16f_driver(void)
 
     if(adc16f_t.flgs2convert && !adc16f_t.inProcessFlg)
         {
-        do// Busca un flag seteado para iniciar conversión
+        do// Busca un flag seteado para iniciar conversiï¿½n
             {
             ch2Cnv = adc16f_t.nx2convert;
             if(adc16f_t.nx2convert<=15) adc16f_t.nx2convert++;
@@ -68,7 +54,7 @@ void adc16f_driver(void)
         // Originalmente implementado usando BIT_GETVAL_QUICK() pero en debugueo
         // ha saltado que no logra asignar correctamente los valores. Usando
         // BIT_GETVAL() lo hace bien. Se ha elegido de todos modos, la mejor
-        // alternativa, que es usar una máscara.
+        // alternativa, que es usar una mï¿½scara.
         // A saber: definitions for ADCON0 register.
         // +-------+-------+------+------+------+------+--------+------+
         // | ADCS1 | ADCS0 | CHS3 | CHS2 | CHS1 | CHS0 | GODONE | ADON |
@@ -86,7 +72,7 @@ void adc16f_driver(void)
 
 //******************************************************************************
 //
-// Función: isr_adc()
+// Funciï¿½n: isr_adc()
 //
 //******************************************************************************
 
@@ -102,9 +88,9 @@ void adc16f_isr(void)
 
 //******************************************************************************
 //
-// Función: getConv()
+// Funciï¿½n: getConv()
 //
-// Devuelve conversión en 8 bits (seteo alineación izquierda en adcSetup()
+// Devuelve conversiï¿½n en 8 bits (seteo alineaciï¿½n izquierda en adcSetup()
 //
 //******************************************************************************
 

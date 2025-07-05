@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "projectheader.h": "c",
+        "eeprom18f.h": "c"
+    }
+}
