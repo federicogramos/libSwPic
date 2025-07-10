@@ -9,9 +9,9 @@
 
 
 //*****************************************************************************
-// CONSTANTES DE FUNCIONAMIENTO DE LIBRER�A
-//10->INTERRUPCI�N 1MS
-//100->INTERRUPCI�N 100US
+// CONSTANTES DE FUNCIONAMIENTO DE LIBRERíA
+//10->INTERRUPCIóN 1MS
+//100->INTERRUPCIóN 100US
 #define KPIN__N_ANTIREBOTE 10
 //*****************************************************************************
 

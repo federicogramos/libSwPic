@@ -52,8 +52,8 @@
  ******************************************************************************/
 
 
-#ifndef __ADC16F_H
-#define __ADC16F_H
+#ifndef __ADC16F_LIB_H
+#define __ADC16F_LIB_H
 
 
 /*******************************************************************************
@@ -228,4 +228,4 @@ extern volatile union
 extern adc16f_struct adc16f_t;
 
 
-#endif // __ADC16F_H
+#endif // __ADC16F_LIB_H

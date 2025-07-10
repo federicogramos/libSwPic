@@ -60,8 +60,9 @@ void adc16f_driver(void) {
  ******************************************************************************/
 
 void adc16f_isr(void) {
-	adc16f_t.chComp = CHS0 | CHS1 << 1 | CHS2 << 2 | CHS3 << 3;
-	adc16f_t.completeFlg = 1;
+    adc16f_t.chComp = CHS0 | CHS1 << 1 | CHS2 << 2 | CHS3 << 3;
+    adc16f_t.completeFlg = 1;
+    
     ADIF = 0;
 }
 
