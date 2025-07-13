@@ -10,7 +10,7 @@
 
 
 /**
- * @brief Se setea el tiempo de interrupci�n en 2.5ms (oscilador=4Mhz,
+ * @brief Se setea el tiempo de interrupción en 2.5ms (oscilador=4Mhz,
  * timer0 prescaler=64). Calculo a realizar:
  * n=256-(Tinterrupt[s])*(fclk[Hz]/[4*prescaler])=256-(65E-3)*(4E6/[4*256])=2
  */
