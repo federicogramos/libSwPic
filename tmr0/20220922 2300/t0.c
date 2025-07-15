@@ -7,7 +7,7 @@
 // - INCLUDE HEADERS
 // - DEFINICION DE VARIABLES GLOBALES
 // - DEFINICION DE FUNCIONES
-//       o Función: timer0Driver(char i)
+//       o Funcio?=n: timer0Driver(char i)
 //==============================================================================
 
 
@@ -25,11 +25,10 @@ t_t0 t0Mem[T0_CANT];
 
 
 //==============================================================================
-// Función: t0Driver(char i)
+// Funcio?=n: t0Driver(char i)
 //==============================================================================
 void t0Driver(char i)
    {
-
    if(!t0Mem[i].pause && t0Mem[i].prescaler>0)
       {
       t0Mem[i].prescaler--;

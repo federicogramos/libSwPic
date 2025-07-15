@@ -6,7 +6,7 @@
 // En este archivo:
 // - NOMBRES DE TIMERS POR PARTE DEL USUARIO Y OTROS SETEOS
 // - ESTRUCTURA PARA CONTROL DE TIEMPO
-// - DECLARACIÓN DE VARIABLES
+// - DECLARACIï¿½N DE VARIABLES
 // - MACROS
 // - DECLARACION DE FUNCIONES
 //==============================================================================
@@ -36,7 +36,7 @@ typedef struct
 
 
 //==============================================================================
-// DECLARACIÓN DE VARIABLES
+// DECLARACIï¿½N DE VARIABLES
 extern t_t0 t0Mem[T0_CANT];//Siempre inicializado a cero, por global
 extern type_t0DelayConstant t0DelayConstant[T0_CANT];
 //==============================================================================
