@@ -69,40 +69,6 @@
 
 /*******************************************************************************
  * @brief Configura al timer0.
- * - prescaler=8
- * - el oscilador interno fosc/4 es quien incremente timer0
- * 
- * PS0
- * PS1
- * PS2
- * Prescaler no utilizado, sino que se utiliza PSA=1 para que no exista
- * prescaler a la senal de clock.
- * (PS2,PS1,PS0)=(0,0,0):prescaler=2
- * (PS2,PS1,PS0)=(0,0,1):prescaler=4
- * (PS2,PS1,PS0)=(0,1,0):prescaler=8
- * (PS2,PS1,PS0)=(0,1,1):prescaler=16
- * (PS2,PS1,PS0)=(1,0,0):prescaler=32
- * (PS2,PS1,PS0)=(1,0,1):prescaler=64
- * (PS2,PS1,PS0)=(1,1,0):prescaler=128
- * (PS2,PS1,PS0)=(1,1,1):prescaler=256
- * 
- * PSA=0; El prescaler no se usa para el watchdog, y sino para el timer0.
- * PSA=1; No prescaler (relacion 1:1). El prescaler se usa para el watchdog.
- * 
- * T0SE
- * No usado. El flanco del pin T0CKI no tiene uso, ya que no estoy usando dicho
- * pin como generador de los pulsos para el timer0.
- * 
- * T0CS=0;
- * El clock usado no es el pin T0CKI, sino que el clock del ciclo de
- * instruccion del microcontrolador, es decir, que tiene una frecuencia de
- * fosc/4.
- * 
- * INTEDG
- * Ignorado por no tener relacion con el timer0
- * 
- * GPPU
- * Ignorado por no tener relacion con el timer0
  ******************************************************************************/
 
  #define IRQ_TIMER0_SETUP() {                                                  \
@@ -117,39 +83,15 @@
 
 /*******************************************************************************
  * @brief Configura al timer1.
- * - el oscilador interno fosc/4 es quien incremente timer1
- * - prescaler=8
- * 
- * TMR1ON=1;
- * Entrada de pulsos del contador habilitada.
- * 
- * TMR1CS=0;
- * Utilizacion del clock interno.
- * 
- * T1SYNC=1;
- * Se usa el clock interno, por lo que este bit es ignorado, ya que no tiene
- * sentido sincronizar el clock consigo mismo. Tampoco es indispensable cuando
- * se usa el clock externo (creo).
- * 
- * T1OSCEN=0;
- * LP oscillator no se habilita para el timer 1.
- * 
- * T1CKPS0=1;
- * T1CKPS1=0;
- * Establecimiento del prescaler en valor=8
- * (T1CKPS1,T1CKPS0)=(1,1) -> prescaler=8
- * (T1CKPS1,T1CKPS0)=(1,0) -> prescaler=4
- * (T1CKPS1,T1CKPS0)=(0,1) -> prescaler=2
- * (T1CKPS1,T1CKPS0)=(0,0) -> prescaler=1
  ******************************************************************************/
 
- #define IRQ_TIMER1_SETUP() {                                                   \
-    TMR1CS = 0;                                                                \
-    T1SYNC = 1;                                                                \
-    T1OSCEN = 0;                                                               \
-    T1CKPS0 = 1;                                                               \
-    T1CKPS1 = 1;                                                               \
-    TMR1ON = 1;                                                                \
+ #define IRQ_TIMER1_SETUP() {                                                  \
+    TMR1CS = TMR1CS_VAL;                                                       \
+    T1SYNC = T1SYNC_VAL;                                                       \
+    T1OSCEN = T1OSCEN_VAL;                                                     \
+    T1CKPS0 = T1CKPS0_VAL;                                                     \
+    T1CKPS1 = T1CKPS1_VAL;                                                     \
+    TMR1ON = TMR1ON_VAL;                                                       \
     IRQ_TIMER1_SET(IRQ_TIMER1_RESET_VAL);                                      \
 }
 
@@ -160,10 +102,7 @@
 //                      PCFG2=0; \
 //                      PCFG3=0; \
 
-
-
 //                      ADCS2=1; \ Solo se usa para 87X version A
-
 
 //
 //ADCS=Fosc/64 

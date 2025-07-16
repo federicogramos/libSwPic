@@ -13,8 +13,8 @@
 #include <projectHeader.h>
 #include <irq12f.h>
 #include <adc12f.h>
-#include <timer.h> // Timers por software.
-#include <sys12f.h> // Definicion de puertos de entrada/salida.
+#include <t0.h>		// Timers por software.
+#include <sys12f.h>	// Definicion de puertos de entrada/salida.
 //#include <pulsadorPin.h>
 
 
@@ -32,14 +32,17 @@
 
    
 /*******************************************************************************
- * @brief
+ * @brief T = 250ms
  ******************************************************************************/
 
  void isr_timer1(void) {
-    IRQ_TIMER1_SET(IRQ_TIMER1_RESET_VAL);// Reseteo del contador de la interrupci�n.
-    timerDriver(TMR_STARTUP);
-    timerDriver(TMR_RELAY);
-    IRQ_TIMER1_RESET_FLAG();
+    IRQ_TIMER1_SET(IRQ_TIMER1_RESET_VAL);// Reset contador de interrupcion.
+
+	t0Driver(T0_STARTUP);	// Timers por software.
+    t0Driver(T0_RELAY);
+	t0Driver(T0_ADC);
+
+	IRQ_TIMER1_RESET_FLAG();
 }
 
    
@@ -58,7 +61,8 @@ void isr_timer0(void) {
  ******************************************************************************/
 
 void isr_adc() {
-	AD_INIT_CONVERSION() // Comienza una nueva conversisn, para que las conversiones sean perisdicas.
+	AD_INIT_CONVERSION()	// Comienza una nueva conversisn, para que las conve
+							// rsiones sean perisdicas.
 	adc12f_driver();
 	IRQ_ADC_RESET_FLAG()
 }
