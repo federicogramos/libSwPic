@@ -5,10 +5,21 @@
  ******************************************************************************/
 
 
+/*******************************************************************************
+ * @brief Debe crearse para cada proyecto en particular.
+ ******************************************************************************/
+
+ #include <sys12f_userSettings.h>
+
+
+ /* Constants *****************************************************************/
+
 #define INPUT 1
 #define OUTPUT 0
 
-// Definiciones para seleccionar funcionalidad de ANSEL (A/D).
+
+/* Definiciones para seleccionar funcionalidad de ANSEL (A/D) *****************/
+
 #define ANALOG_INPUT 1
 #define DIGITAL_IO 0
 
@@ -28,10 +39,13 @@ void systemInit(void);
                              }
 
 
-// Si no se va a usar el A/D, esta funcion se debe invocar, ya que por defecto,
-// luego del reset, los puertos de entrada comienzan como entradas analogicas pa
-// ra ser usadas con el A/D, lo cual deshabilita que funcionen como entradas o s
-// alidas digitales.
+/*******************************************************************************
+ * Si no se va a usar el A/D, esta funcion se debe invocar, ya que por defecto,
+ * luego del reset, los puertos de entrada comienzan como entradas analogicas pa
+ * ra ser usadas con el A/D, lo cual deshabilita que funcionen como entradas o s
+ * alidas digitales.
+ * ****************************************************************************/
+
 #define DISABLE_AD() {                                                         \
                      ANS0 = DIGITAL_IO;                                        \
                      ANS1 = DIGITAL_IO;                                        \
@@ -39,15 +53,17 @@ void systemInit(void);
                      ANS3 = DIGITAL_IO;                                        \
                      }
 
+/*******************************************************************************
+ * Si se va a usar el A/D, esta funcion se debe invocar, para setear la manera e
+ * n la que se usara el A/D, cantidad de canales, etc.
+ * Solo se usa AN3.
+ * El voltaje de referencia es VDD.
+ * El resultado se quiere right-justified.
+ * Se utiliza el oscilador RC dedicado interno para generar frecuencia de conver
+ * sion del AD (frecuencia de conversion maxima = 45KHz).
+ ******************************************************************************/
 
-// Si se va a usar el A/D, esta funcion se debe invocar, para setear la manera e
-// n la que se usara el A/D, cantidad de canales, etc.
-// Solo se usa AN3.
-// El voltaje de referencia es VDD.
-// El resultado se quiere right-justified.
-// Se utiliza el oscilador RC dedicado interno para generar frecuencia de conver
-// sion del AD (frecuencia de conversion maxima = 45KHz).
-#define AD_SETUP() {      \
+#define AD_SETUP() {                                                           \
                      ANS0 = DIGITAL_IO;                                        \
                      ANS1 = DIGITAL_IO;                                        \
                      ANS2 = DIGITAL_IO;                                        \
@@ -63,9 +79,12 @@ void systemInit(void);
                      }
 
 
-// Inicia conversion del A/D. Si voy a usar el AD mediante interrupciones, porqu
-// e quiero que automaticamente me llame la rutina de interrupcion cada vez que 
-// hay una conversion nueva, al menos 1 vez al principio del booteo del programa 
-// debo llamar a esta macro, porque si no, nunca va a conmenzar a convertir el A
-// DC.
+/*******************************************************************************
+ * Inicia conversion del A/D. Si voy a usar el AD mediante interrupciones, porqu
+ * e quiero que automaticamente me llame la rutina de interrupcion cada vez que 
+ * hay una conversion nueva, al menos 1 vez al principio del booteo del programa 
+ * debo llamar a esta macro, porque si no, nunca va a conmenzar a convertir el A
+ * DC.
+ ******************************************************************************/
+
 #define AD_INIT_CONVERSION() { GODONE = 1; }
