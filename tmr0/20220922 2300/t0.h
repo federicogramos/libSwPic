@@ -24,17 +24,17 @@
 
 typedef struct
    {
-   type_t0Size prescaler;
-   unsigned char loop:1;//timer circular
-   unsigned char flag:1;//timeout
-   unsigned char pause:1;//inhabilita decremento del contador
-   }t_t0;
+   type_t0Size 		prescaler;
+   unsigned char	loop	: 1; // Timer circular.
+   unsigned char	flag	: 1; // Timeout.
+   unsigned char	pause	: 1; // Inhabilita decremento del contador.
+   } t_t0;
  
 
 
 /* External declarations ******************************************************/
 
-extern t_t0 t0Mem[T0_CANT]; //Siempre inicializado a cero, por global.
+extern t_t0 t0Mem[T0_CANT]; // Siempre inicializado a cero, por global.
 extern type_t0DelayConstant t0DelayConstant[T0_CANT];
 
 
