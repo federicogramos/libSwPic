@@ -22,13 +22,12 @@
  * @brief
  ******************************************************************************/
 
-typedef struct
-   {
-   type_t0Size 		prescaler;
-   unsigned char	loop	: 1; // Timer circular.
-   unsigned char	flag	: 1; // Timeout.
-   unsigned char	pause	: 1; // Inhabilita decremento del contador.
-   } t_t0;
+typedef struct {
+	type_t0Size 		prescaler;
+	unsigned char	loop	: 1; // Timer circular.
+	unsigned char	flag	: 1; // Timeout.
+	unsigned char	pause	: 1; // Inhabilita decremento del contador.
+} t_t0;
  
 
 
@@ -51,7 +50,7 @@ extern type_t0DelayConstant t0DelayConstant[T0_CANT];
 	t0Mem[i].prescaler = t0DelayConstant[i];                                   \
 	t0Mem[i].pause = 0;                                                        \
 	t0Mem[i].loop = 1;                                                         \
-	}
+}
 
 #define T0_TIMEOUT(i) (t0Mem[i].flag? !(t0Mem[i].flag = 0) : 0)
 #define T0_TIMEOUT_FORCE(i) (t0Mem[i].flag = 1)
@@ -64,13 +63,13 @@ extern type_t0DelayConstant t0DelayConstant[T0_CANT];
 // esa.
 #define T0_STOP(i) {                                                           \
 	t0Mem[i].prescaler=0;                                                      \
-	}
+}
 
 #define T0_STOP_LOOP(i) {                                                      \
 	t0Mem[i].prescaler = 0;                                                    \
 	t0Mem[i].pause = 1;                                                        \
 	t0Mem[i].loop = 0;                                                         \
-	}
+}
 
 #define T0_PAUSE(i) (t0Mem[i].pause = 1)
 #define T0_UNPAUSE(i) (t0Mem[i].pause = 0)
