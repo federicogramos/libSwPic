@@ -3,6 +3,7 @@
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250710 1747
  *
+ * Uso de timer circular: se lo debe disparar por 1 unica vez T0_INIT_LOOP(i).
  ******************************************************************************/
 
 
@@ -18,9 +19,7 @@
 #include <t0_proj_aliases.h>
  
 
-/*******************************************************************************
- * @brief
- ******************************************************************************/
+/* Structures *****************************************************************/
 
 typedef struct {
 	type_t0Size 		prescaler;
