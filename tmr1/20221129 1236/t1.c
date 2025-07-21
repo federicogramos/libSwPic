@@ -8,7 +8,7 @@
 //==============================================================================
 // INCLUDE
 #include <t1.h>
-#include <t1_delays.h>// Delay de timers por parte de usuario
+#include <t1_proj_delays.h>// Delay de timers por parte de usuario
 //==============================================================================
 
 

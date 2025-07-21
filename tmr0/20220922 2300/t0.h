@@ -18,8 +18,8 @@
 
 //==============================================================================
 // NOMBRES DE TIMERS POR PARTE DEL USUARIO Y OTROS SETEOS
-#include <t0_setupUser.h>
-#include <t0_aliases.h>
+#include <t0_proj_setup.h>
+#include <t0_proj_aliases.h>
 //==============================================================================
 
 

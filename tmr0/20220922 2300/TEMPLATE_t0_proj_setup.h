@@ -1,10 +1,10 @@
 //******************************************************************************
-// ARCHIVO: t0_setupUser.h
+// ARCHIVO: t0_proj_setup.h
 //******************************************************************************
 
 
-#ifndef __T0_SETUP_USER_H
-#define __T0_SETUP_USER_H
+#ifndef __T0_PROJ_SETUP_H
+#define __T0_PROJ_SETUP_H
 
 
 //******************************************************************************
@@ -14,4 +14,4 @@ typedef type_t0Size type_t0DelayConstant;//SE GENERA UN ARRAY QUE CONTIENE LOS T
 //******************************************************************************
 
 
-#endif//__T0SETUP_USER_H
+#endif//__T0_PROJ_SETUP_H
