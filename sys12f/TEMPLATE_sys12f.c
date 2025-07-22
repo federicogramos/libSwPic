@@ -2,8 +2,7 @@
  * @file /system/system_12f.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250711 1816
- *
- * Cada proyecto particular tiene su propio archivo "system.c".
+ * @note Cada proyecto particular tiene su propio archivo "system.c".
  ******************************************************************************/
 
 
