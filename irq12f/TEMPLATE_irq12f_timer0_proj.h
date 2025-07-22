@@ -3,6 +3,10 @@
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
  * @note Seteos específicos del proyecto relativo a interrupciones (timer0).
+ * 
+ * Se mantiene esta libreria del timer dentro del ambito de irq porque el timer0
+ * es exclusivo para usar con irq, a diferencia del adc que podria ser usado con
+ * o sin las interrupciones.
  ******************************************************************************/
 
 
