@@ -1,6 +1,9 @@
 {
 	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
-		"projectheader.h": "c"
+		"projectheader.h": "c",
+		"irq12f_adc.h": "c",
+		"irq12f.h": "c",
+		"irq12f_timer1.h": "c"
 	}
 }

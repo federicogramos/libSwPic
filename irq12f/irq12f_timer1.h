@@ -1,9 +1,12 @@
 /*******************************************************************************
- * @file /libSwPic/irq12f/irq12f.h
+ * @file /libSwPic/irq12f/irq12f_timer1.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
  * @note Maneja las interrupciones (timer1).
  ******************************************************************************/
+
+#ifndef __IRQ12F_TIMER1_H
+#define __IRQ12F_TIMER1_H
 
 
 #include <irq12f_timer1_proj.h>
@@ -50,3 +53,5 @@
 
 void isr_timer1(void);
 
+
+#endif // __IRQ12F_TIMER1_H

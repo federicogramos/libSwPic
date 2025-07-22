@@ -1,5 +1,5 @@
 /*******************************************************************************
- * @file /libSwPic/irq12f/irq12f.h
+ * @file /libSwPic/irq12f/irq12f_timer0.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
  * @note Maneja las interrupciones (timer0)
