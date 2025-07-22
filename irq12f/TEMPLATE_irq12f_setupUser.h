@@ -53,9 +53,8 @@
  * @brief Timer 1
  * 
  * Timer 16 bits.  Tiempo maximo @osc 4Mhz = 
- * * - el oscilador interno fosc/4 es quien incremente timer1
- * - prescaler=8
-*******************************************************************************/
+ * -- el oscilador interno fosc/4 es quien incremente timer1
+ ******************************************************************************/
 
 #define TMR1ON_VAL	1;	// Entrada de pulsos del contador habilitada. En 1 para que
 					// llegue el timer.
@@ -83,13 +82,12 @@
 					// }
 
 #define T1CKPS0_VAL	1	// Value | TMR1 rate
-#define T1CKPS1_VAL	0	// 00    | 1 : 1
+#define T1CKPS1_VAL	1	// 00    | 1 : 1
 						// 01    | 1 : 2
 						// 10    | 1 : 4
 						// 11    | 1 : 8
 
- // Se setea el tiempo de interrupcion en 25ms (oscilador interno = 4Mhz, timer1
- // con prescaler = 8). Calculo a realizar:
+ // Setea el tiempo de interrupcion. Calculo a realizar:
  // IRQ_TIMER1_RESET_VAL = 65536 - Tinterrupt[s] * (fclk[Hz] / [4 * prescaler])
  // Ejemplo para obtener 250ms:
  // IRQ_TIMER1_RESET_VAL = 65536 - 250E-3 * (4E6 / [4 * 8]) = 34286
