@@ -15,7 +15,6 @@
 #include <irq12f.h>			// Main definition.
 #include <irq12f_timer0.h>	// Accesoria,si se usa.
 #include <irq12f_timer1.h>	// Accesoria,si se usa.
-#include <irq12f_adc.h>		// Accesoria,si se usa.
 
 #include <adc12f.h>
 #include <t0.h>				// Timers por software.

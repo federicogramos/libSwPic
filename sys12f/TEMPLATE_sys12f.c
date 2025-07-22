@@ -7,12 +7,12 @@
 
 
 #include <projectHeader.h>
-
 #include <sys12f.h>			// Puertos en <proj>/sys12f_proj.h
 
 #include <irq12f.h>			// Main definition.
 #include <irq12f_timer1.h>	// Accesoria,si se usa.
-#include <irq12f_adc.h>		// Accesoria,si se usa.
+
+#include <adc12f.h>			// Accesoria,si se usa.
 
 
 /*******************************************************************************
