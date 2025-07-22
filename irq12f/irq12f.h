@@ -3,10 +3,13 @@
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
  * @note Maneja las interrupciones (principal).
+ * 
+ * Cada proyecto utiliza distintos perifericos. Se dispone de irq12f_xxx.h para
+ * cada periferico a usar, encabezado que debe ser incluido junto con irq12f.h
  ******************************************************************************/
 
-
-#include <irq12f_setupUser.h>
+#ifndef __IRQ12F_H
+#define __IRQ12F_H
 
 
 /*******************************************************************************
@@ -25,3 +28,4 @@
 #define IRQ_PERIPHERAL_DISABLE()	{ PEIE = 0; }
 
    
+#endif // __IRQ12F_H
