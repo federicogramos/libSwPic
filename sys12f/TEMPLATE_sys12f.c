@@ -8,7 +8,7 @@
 
 
 #include <projectHeader.h>
-#include <sys12f.h> // Puertos en <proj>/sys12f_userSettings.h
+#include <sys12f.h> // Puertos en <proj>/sys12f_proj.h
 #include <interrupts.h>
 
 
