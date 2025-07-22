@@ -9,34 +9,42 @@
  * @brief Debe crearse para cada proyecto en particular.
  ******************************************************************************/
 
- #include <sys12f_userSettings.h>
+ #include <sys12f_proj.h>
 
 
- /* Constants *****************************************************************/
+/*******************************************************************************
+ * @brief Constants
+ ******************************************************************************/
 
-#define INPUT 1
+ #define INPUT 1
 #define OUTPUT 0
 
 
-/* Definiciones para seleccionar funcionalidad de ANSEL (A/D) *****************/
+/*******************************************************************************
+ * @brief Definiciones para seleccionar funcionalidad de ANSEL (A/D)
+ ******************************************************************************/
 
 #define ANALOG_INPUT 1
 #define DIGITAL_IO 0
 
 
-/* Prototipos *****************************************************************/
+/*******************************************************************************
+ * @brief Prototipos
+ ******************************************************************************/
 
 void sys12f_init(void);
 
 
-/* Macros *********************************************************************/
- 
-// Comparator is set off.
+/*******************************************************************************
+ * @brief Macros
+ ******************************************************************************/
+
+// Comparator should be set off.
 #define DISABLE_COMPARATOR() {                                                 \
-                             CM0 = 1;                                          \
-                             CM1 = 1;                                          \
-                             CM2 = 1;                                          \
-                             }
+	CM0 = 1;                                                                   \
+	CM1 = 1;                                                                   \
+	CM2 = 1;                                                                   \
+}
 
 
 /*******************************************************************************
@@ -47,11 +55,11 @@ void sys12f_init(void);
  * ****************************************************************************/
 
 #define DISABLE_AD() {                                                         \
-                     ANS0 = DIGITAL_IO;                                        \
-                     ANS1 = DIGITAL_IO;                                        \
-                     ANS2 = DIGITAL_IO;                                        \
-                     ANS3 = DIGITAL_IO;                                        \
-                     }
+	ANS0 = DIGITAL_IO;                                                         \
+	ANS1 = DIGITAL_IO;                                                         \
+	ANS2 = DIGITAL_IO;                                                         \
+	ANS3 = DIGITAL_IO;                                                         \
+}
 
 /*******************************************************************************
  * Si se va a usar el A/D, esta funcion se debe invocar, para setear la manera e
@@ -64,19 +72,19 @@ void sys12f_init(void);
  ******************************************************************************/
 
 #define AD_SETUP() {                                                           \
-                     ANS0 = DIGITAL_IO;                                        \
-                     ANS1 = DIGITAL_IO;                                        \
-                     ANS2 = DIGITAL_IO;                                        \
-                     ANS3 = ANALOG_INPUT;                                      \
-                     CHS0 = 1;                                                 \
-                     CHS1 = 1;                                                 \
-                     VCFG = 0;                                                 \
-                     ADFM = 1;                                                 \
-                     ADCS0 = 1;                                                \
-                     ADCS1 = 1;                                                \
-                     ADCS2 = 1;                                                \
-                     ADON = 1;                                                 \
-                     }
+	ANS0 = DIGITAL_IO;                                                         \
+	ANS1 = DIGITAL_IO;                                                         \
+	ANS2 = DIGITAL_IO;                                                         \
+	ANS3 = ANALOG_INPUT;                                                       \
+	CHS0 = 1;                                                                  \
+	CHS1 = 1;                                                                  \
+	VCFG = 0;                                                                  \
+	ADFM = 1;                                                                  \
+	ADCS0 = 1;                                                                 \
+	ADCS1 = 1;                                                                 \
+	ADCS2 = 1;                                                                 \
+	ADON = 1;                                                                  \
+}
 
 
 /*******************************************************************************
