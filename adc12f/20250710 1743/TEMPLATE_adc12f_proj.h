@@ -6,10 +6,22 @@
  ******************************************************************************/
 
 
-#ifndef __ADC12F_PROJ_H
-#define __ADC12F_PROJ_H
+#ifndef __IRQ12F_ADC_PROJ_H
+#define __IRQ12F_ADC_PROJ_H
 
 
- 
+#define ANS0_VAL	DIGITAL_IO
+#define ANS1_VAL	DIGITAL_IO
+#define ANS2_VAL	DIGITAL_IO
+#define ANS3_VAL	ANALOG_INPUT
+#define CHS0_VAL	1
+#define CHS1_VAL	1
+#define VCFG_VAL	0
+#define ADFM_VAL	1
+#define ADCS0_VAL	1
+#define ADCS1_VAL	1
+#define ADCS2_VAL	1
+#define ADON_VAL	1
 
-#endif // __ADC12F_PROJ_H
+
+#endif // __IRQ12F_ADC_PROJ_H

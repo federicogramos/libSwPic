@@ -48,18 +48,18 @@ extern int adc12f_val;
  ******************************************************************************/
 
 #define AD_SETUP() {                                                           \
-	ANS0 = DIGITAL_IO;                                                         \
-	ANS1 = DIGITAL_IO;                                                         \
-	ANS2 = DIGITAL_IO;                                                         \
-	ANS3 = ANALOG_INPUT;                                                       \
-	CHS0 = 1;                                                                  \
-	CHS1 = 1;                                                                  \
-	VCFG = 0;                                                                  \
-	ADFM = 1;                                                                  \
-	ADCS0 = 1;                                                                 \
-	ADCS1 = 1;                                                                 \
-	ADCS2 = 1;                                                                 \
-	ADON = 1;                                                                  \
+	ANS0 = ANS0_VAL;                                                           \
+	ANS1 = ANS1_VAL;                                                           \
+	ANS2 = ANS2_VAL;                                                           \
+	ANS3 = ANS3_VAL;                                                           \
+	CHS0 = CHS0_VAL;                                                           \
+	CHS1 = CHS1_VAL;                                                           \
+	VCFG = VCFG_VAL;                                                           \
+	ADFM = ADFM_VAL;                                                           \
+	ADCS0 = ADCS0_VAL;                                                         \
+	ADCS1 = ADCS1_VAL;                                                         \
+	ADCS2 = ADCS2_VAL;                                                         \
+	ADON = ADON_VAL;                                                           \
 }
 
 
