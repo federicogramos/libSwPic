@@ -10,6 +10,10 @@
 #define __IRQ12F_ADC_PROJ_H
 
 
+/*******************************************************************************
+ * @brief Las siguientes deben ser ajustadas segun el uso q se le de al ad.
+ ******************************************************************************/
+
 // The ANS3:ANS0 bits (ANSEL<3:0>) and the TRISIO bits control the operation of 
 // the A/D port pins. Set the corresponding TRISIO bits to set the pin output dr
 // iver to its high-impedance state. Likewise, set the corresponding ANS bit to 
