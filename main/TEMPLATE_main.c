@@ -17,7 +17,8 @@
  * @brief Globals
  ******************************************************************************/
 
-char numeroDisplay = 0; // Esta variable contiene el numero que se muestra en el display de 7 segmentos.
+char numeroDisplay = 0;	// Esta variable contiene el numero que se muestra en el
+						// display de 7 segmentos.
 
 
 
