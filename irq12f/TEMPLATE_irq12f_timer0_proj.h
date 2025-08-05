@@ -17,7 +17,7 @@
 /*******************************************************************************
  * @brief Timer 0.
  *
- * Timer 8 bits. Tiempo maximo @osc 4Mhz = 16.384ms.
+ * Timer 8 bits. Tiempo maximo @osc 4Mhz = 16.384ms. (675 = 4Mhz, 683 = 8Mhz).
 *******************************************************************************/
 
 #define T0CS_VAL	0	// T0CS: TMR0 Clock Source Select bit
