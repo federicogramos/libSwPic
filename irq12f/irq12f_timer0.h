@@ -16,7 +16,7 @@
 #define IRQ_TIMER0_ENABLE()			{ T0IE = 1; }
 #define IRQ_TIMER0_DISABLE()		{ T0IE = 0; }
 #define IRQ_TIMER0_RESET_FLAG()		{ T0IF = 0; }
- #define IRQ_TIMER0					T0IE && T0IF
+#define IRQ_TIMER0					T0IE && T0IF
 
 
 /*******************************************************************************

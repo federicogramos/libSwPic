@@ -9,6 +9,23 @@
 #define __MAIN_H
 
 
+// PIC12F629/675 CONFIG: CONFIGURATION WORD (ADDRESS: 2007h)
+// R/P-1 R/P-1 U-0 U-0 U-0 R/P-1 R/P-1 R/P-1 R/P-1 R/P-1 R/P-1 R/P-1 R/P-1 R/P-1
+// BG1 BG0 — — — CPD CP BODEN MCLRE PWRTE WDTE F0SC2 F0SC1 F0SC0
+
+// FOSC2:FOSC0: Oscillator Selection bits.
+// 111 = RC osc: CLKOUT function on GP4/OSC2/CLKOUT pin, RC on GP5/OSC1/CLKIN
+// 110 = RC osc: I/O function on GP4/OSC2/CLKOUT pin, RC on GP5/OSC1/CLKIN
+
+// INTOSC. 12F629/675 = 4Mhz.
+// 101 = CLKOUT fun on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN
+// 100 = I/O fun on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN
+
+// 011 = EC: I/O function on GP4/OSC2/CLKOUT pin, CLKIN on GP5/OSC1/CLKIN
+// 010 = HS oscillator: High speed crystal/resonator on GP4/OSC2/CLKOUT and GP5/OSC1/CLKIN
+// 001 = XT oscillator: Crystal/resonator on GP4/OSC2/CLKOUT and GP5/OSC1/CLKIN
+// 000 = LP oscillator: Low-power crystal on GP4/OSC2/CLKOUT and GP5/OSC1/CLKIN
+
 __CONFIG(CPD & PROTECT & BOREN & MCLRDIS & PWRTEN & WDTDIS & INTIO);
 /* data protect on */ 
 /* code protection on */
