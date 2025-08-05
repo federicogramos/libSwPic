@@ -9,12 +9,12 @@
  /******************************************************************************
  * @brief Puertos q se usan e identificación.
  * 
- *                           +-----------+
- *                     VDD ==|    \_/    |== VSS
- *    GP5/T1CKI/OSC1/CLKIN ==| PIC12F675 |== GP0/AN0/CIN+/ICSPDAT
- * GP4/AN3/T1G/OSC2/CLKOUT ==|           |== GP1/AN1/CIN-/VREF/ICSPCLK
- *            GP3/MCLR/VPP ==|           |== GP2/AN2/T0CKI/INT/COUT
- *                           +-----------+
+ *                               +-----------+
+ *                         VDD ==|    \_/    |== VSS
+ *  GP5/T1CKI/OSC1/CLKIN [SW1] ==| PIC12F675 |== [IN_RAW] GP0/AN0/CIN+/ICSPDAT
+ * GP4/AN3/T1G/OSC2/CLKO [SW2] ==|           |== [OUT] GP1/AN1/CIN-/VREF/ICSPCLK
+ *          GP3/MCLR/VPP [SW3] ==|           |== [SW4] GP2/AN2/T0CKI/INT/COUT
+ *                               +-----------+
  ******************************************************************************/
 
 #define UNUSED0	GPIO0
