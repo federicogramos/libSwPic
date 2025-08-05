@@ -45,7 +45,7 @@
 	DDR_LED = OUTPUT;                                                          \
 	DDR_RLY = OUTPUT;                                                          \
 	DDR_ADC = INPUT;                                                           \
-	}
+}
 
 /*******************************************************************************
  * @brief En caso de que se requiere valores iniciales al booteo.
@@ -54,5 +54,5 @@
 #define INIT_PORTS() {                                                         \
 	LED = 0;                                                                   \
 	RLY = 0;                                                                   \
-	}
+}
 
