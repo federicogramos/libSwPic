@@ -23,7 +23,7 @@
 #define T0CS_VAL	0	// T0CS: TMR0 Clock Source Select bit
 						// 1 = Transition on GP2/T0CKI pin
 						// 0 = Internal instruction cycle clock (CLKOUT)
-#define PSA_VAL		1	// PSA: Prescaler Assignment bit
+#define PSA_VAL		0	// PSA: Prescaler Assignment bit
 						// 1 = Prescaler is assigned to the WDT
 						// 0 = Prescaler is assigned to the TIMER0 module
 #define PS0_VAL 	1	// PS2:PS0: Prescaler Rate Select bits
