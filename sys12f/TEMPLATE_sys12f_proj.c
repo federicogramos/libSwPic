@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 
-#include <projectHeader.h>
+#include <project.h>
 #include <sys12f.h>			// Puertos en <proj>/sys12f_proj.h
 
 #include <irq12f.h>			// Main definition.
