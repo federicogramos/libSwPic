@@ -2,6 +2,8 @@
 // Archivo: t1_lib.h
 // Autor: Federico Ramos
 // Modificado: 03-11-2023
+//
+// Timers por software.
 //==============================================================================
 
 
@@ -34,7 +36,7 @@ typedef struct
 
 
 //******************************************************************************
-// DECLARACIÓN DE VARIABLES
+// DECLARACIï¿½N DE VARIABLES
 
 extern t_t1 t1Mem[T1_CANT];//Siempre inicializado a cero, por global
 extern type_t1DelayConstant t1DelayConstant[T1_CANT];

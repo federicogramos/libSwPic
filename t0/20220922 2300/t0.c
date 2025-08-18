@@ -2,6 +2,8 @@
  * @file /tmr0/t0.c
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250721 1900
+ * 
+ * Timers por software.
  ******************************************************************************/
 
 

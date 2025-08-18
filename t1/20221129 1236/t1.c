@@ -2,6 +2,8 @@
 // Archivo: t1.c
 // Autor: Federico Ramos
 // Modificado: 03-11-2023
+//
+// Timers por software.
 //==============================================================================
 
 

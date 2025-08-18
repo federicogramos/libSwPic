@@ -2,6 +2,8 @@
  * @file /elevador12f675/sw/t0_proj_setup.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250723 1546
+ * 
+ * Timers por software.
  ******************************************************************************/
 
 

@@ -3,6 +3,7 @@
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250710 1747
  *
+ * Timers por software.
  * Uso de timer circular: se lo debe disparar por 1 unica vez T0_INIT_LOOP(i).
  ******************************************************************************/
 
