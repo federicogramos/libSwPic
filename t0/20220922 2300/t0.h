@@ -20,10 +20,24 @@
 #include <t0_proj_aliases.h>
  
 
-/* Structures *****************************************************************/
+/* Structures ******************************************************************
+ * Estados del temporizador (se usa * para resaltar los bits importantes):
+ *                        prescaler | flag  | pause
+ * T0_STOPPED |             0 [s]     0 [s]   0
+ * T0_STOPPED | T0_PAUSED   0 [s]     0 [s]   1 [p]
+ *            |             0         1       0
+ *            | T0_PAUSED   0         1       1 [p]
+ * T0_RUNNING |            >0 [r]     0       0 [r]
+ *            | T0_PAUSED  >0         0       1 [p]
+ * T0_RUNNING |            >0 [r]     1       0 [r]
+ *            | T0_PAUSED  >0         1       1 [p]
+ *
+ * Tener en cuenta que cuando un timer llega a cero, se setea automaticamente el
+ * flag, por lo que T0_STOPPED retorna 1 solo luego de hacer T0_TIMEOUT.
+ */
 
 typedef struct {
-	type_t0Size 		prescaler;
+	type_t0Size		prescaler;
 	unsigned char	loop	: 1; // Timer circular.
 	unsigned char	flag	: 1; // Timeout.
 	unsigned char	pause	: 1; // Inhabilita decremento del contador.

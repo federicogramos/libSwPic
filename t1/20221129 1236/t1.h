@@ -22,6 +22,7 @@
 
 //******************************************************************************
 // ESTRUCTURA PARA CONTROL DE TIEMPO
+// TO-DO: copiar las aclaraciones de T0.
 
 typedef struct
    {
