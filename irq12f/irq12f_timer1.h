@@ -2,7 +2,7 @@
  * @file /libSwPic/irq12f/irq12f_timer1.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
- * @note Maneja las interrupciones (timer1).
+ * @note HW timer. Maneja las interrupciones (timer1).
  ******************************************************************************/
 
 #ifndef __IRQ12F_TIMER1_H

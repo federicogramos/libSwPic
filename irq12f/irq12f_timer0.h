@@ -2,7 +2,7 @@
  * @file /libSwPic/irq12f/irq12f_timer0.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
- * @note Maneja las interrupciones (timer0)
+ * @note HW timer. Maneja las interrupciones (timer0)
  ******************************************************************************/
 
 

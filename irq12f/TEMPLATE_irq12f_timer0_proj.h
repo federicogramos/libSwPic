@@ -2,7 +2,7 @@
  * @file /irq12f_setupUser.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250427 1843
- * @note Seteos específicos del proyecto relativo a interrupciones (timer0).
+ * @note HW timer. Seteos específicos del proyecto relativo a interrupciones.
  * 
  * Se mantiene esta libreria del timer dentro del ambito de irq porque el timer0
  * es exclusivo para usar con irq, a diferencia del adc que podria ser usado con
