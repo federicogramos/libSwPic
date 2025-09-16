@@ -27,9 +27,11 @@ void sys12f_init(void) {
 	// litarlo.
 	DISABLE_COMPARATOR();
 
-	IRQ_TIMER1_SETUP(); // Setup interrupt. Timer1 16 bit timer.
-
 	INIT_DDR(); // Establece los puertos de entrada/salida.
+
+	INIT_PORTS();// Al arranque, pone en un estado conocido a las salidas.
+
+	IRQ_TIMER1_SETUP(); // Setup interrupt. Timer1 16 bit timer.
 
 	AD_SETUP(); // Va a usar el A/D.
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * @file projectHeader.h
+ * @file project.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version 20250804 2053
  * @note Para pic12f, pic16f y pic18f.
