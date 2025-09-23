@@ -1,7 +1,7 @@
 //******************************************************************************
 // ARCHIVO:     x1w_lib.h
 // AUTOR:       Federico Ramos
-// ÚLT. MODIF:  10-12-2021 1507
+// ZLT. MODIF:  10-12-2021 1507
 //******************************************************************************
 
 
@@ -13,8 +13,8 @@
 //PARA DHT11
 //******************************************************************************
 #define DHT11_RESPONSE_BYTES 5
-#define DHT11_WAIT_FP()   while(X1_WIRE_1==0);
-#define DHT11_WAIT_FN() while(X1_WIRE_1==1);
+#define DHT11_WAIT_FP()   while(X1W_DHT11_PIN == 0);
+#define DHT11_WAIT_FN() while(X1W_DHT11_PIN == 1);
 
 extern char dht11_mem[DHT11_RESPONSE_BYTES];
 
@@ -40,21 +40,34 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 //******************************************************************************
 //volatile bit X1_WIRE_0 @ ((unsigned)&GPIO*8)+5;
 //volatile bit X1_WIRE_0_DDR @ ((unsigned)&GPIO*8)+5;
-volatile bit X1W_DHT11_PIN @ ((unsigned)&PORTA*8)+3;
-volatile bit X1W_DHT11_PIN_DDR @ ((unsigned)&TRISA*8)+3;
+//volatile bit X1W_DHT11_PIN @ ((unsigned)&PORTA*8)+3;
+//volatile bit X1W_DHT11_PIN_DDR @ ((unsigned)&TRISA*8)+3;
 
 
 //volatile bit X1_WIRE_0 @ ((unsigned)&GPIO*8)+5;
 //volatile bit X1_WIRE_0_DDR @ ((unsigned)&TRISIO*8)+5;
+
+#include <x1wDht11_settings.h>
 
 
 #define X1_WIRE_BUFLEN 8
 
 
 
+//daly aprox 0.5us por cada unidad de delay
+int nCyclesDelay;
+
+
+#define DELAY_US(n)\
+	{\
+	nCyclesDelay=((int)(n/1.084375));\
+	while(--nCyclesDelay);\
+	}
+
+
 
 //******************************************************************************
-// DECLARACIÓN DE FUNCIONES
+// DECLARACISN DE FUNCIONES
 //char x1w_rst(void);
 //void x1w_write_bit(char b);
 //char x1w_read_bit(void);
