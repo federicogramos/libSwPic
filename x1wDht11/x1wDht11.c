@@ -1,9 +1,9 @@
 //******************************************************************************
 // ARCHIVO: x1wDht11.c
 // AUTOR: Federico Ramos
-// DESCRIPCIÓN: Librería
-// ÚLT. MODIF: 22-01-2020 1749
-// COMENTARIO: Librería para comunicación 1 wire, dedicada exclusivamente para
+// DESCRIPCIï¿½N: Librerï¿½a
+// ï¿½LT. MODIF: 22-01-2020 1749
+// COMENTARIO: Librerï¿½a para comunicaciï¿½n 1 wire, dedicada exclusivamente para
 //			   integrado DHT11.
 //             IMPORTANTE, ESTA LIBRERIA DESHABILITA POR PERIODOS DE US A TODAS
 //             LAS INTERRUPCIONES
@@ -14,7 +14,7 @@
 // ARCHIVOS DE ENCABEZAMIENTO
 #include <projectHeader.h>
 #include <system.h>
-#include <x1wDht11_lib.h>
+#include <x1wDht11.h>
 #include <timer_fixed_lib.h>
 #include <timer_lib.h>
 //******************************************************************************
@@ -51,7 +51,7 @@
 
 
 //******************************************************************************
-// DEFINICIÓN DE VARIABLES
+// DEFINICIï¿½N DE VARIABLES
 // dht11_mem[0] = byte %RH integer part
 // dht11_mem[1] = byte %RH decimal part = 0 (always)
 // dht11_mem[2] = byte Temp integer part

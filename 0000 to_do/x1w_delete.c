@@ -1,11 +1,14 @@
 //******************************************************************************
 // ARCHIVO: x1w.c
 // AUTOR: Federico Ramos
-// DESCRIPCIÓN: Librería
-// ÚLT. MODIF: 22-01-2020 1338
-// COMENTARIO: Librería para comunicación 1 wire
+// DESCRIPCIï¿½N: Librerï¿½a
+// ï¿½LT. MODIF: 22-01-2020 1338
+// COMENTARIO: Librerï¿½a para comunicaciï¿½n 1 wire
 //             IMPORTANTE, ESTA LIBRERIA DESHABILITA POR PERIODOS DE US A TODAS
 //             LAS INTERRUPCIONES
+//
+// Por lo que estuve viendo, esta es una version vieja de x1wDht11.c porque aquella la estuve ordenando.
+// Este archivo dejarlo un tiempo y luego borrarlo.
 //******************************************************************************
 
 
