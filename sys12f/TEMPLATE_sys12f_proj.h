@@ -1,5 +1,5 @@
 /*******************************************************************************
- * @file /sys/sys12f_userSettings.h
+ * @file /sys/sys12f_proj.h
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250711 1816
  * @note Cada proyecto debe tener su sys12f_userSettings.h particular.
