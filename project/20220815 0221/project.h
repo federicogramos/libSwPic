@@ -71,7 +71,7 @@
  * @return byte: donde el mismo fue armado bit por bit usando los bi.
  ******************************************************************************/
 
- #define BIT_BY_BIT_BYTE(b7, b6, b5, b4, b3, b2, b1, b0) (                      \
+ #define BIT_BY_BIT_BYTE(b7, b6, b5, b4, b3, b2, b1, b0) (                     \
     b0 * 1UL << 0 |                                                            \
     b1 * 1UL << 1 |                                                            \
     b2 * 1UL << 2 |                                                            \
