@@ -1,5 +1,5 @@
 /*******************************************************************************
- * @file /system/system_12f.h
+ * @file /system/sys12f_proj.c
  * @author Federico Ramos <federico.g.ramos@gmail.com>
  * @version  20250711 1816
  * @note Cada proyecto particular tiene su propio archivo "system.c".
