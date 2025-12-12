@@ -82,4 +82,7 @@ int nCyclesDelay;
 char x1wDht11_get(void);
 //******************************************************************************
 
+ void x1wDht11_init(void);
+
+
 #endif // __X1_WIRE_DHT11_LIB_H

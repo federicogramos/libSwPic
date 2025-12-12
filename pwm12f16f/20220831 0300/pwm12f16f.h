@@ -45,11 +45,11 @@
  ******************************************************************************/
 
 #if	defined(_12F683)
-	volatile bit PWM_PIN @ ((unsigned)&GPIO*8)+2;
-	volatile bit PWM_PIN_DDR @ ((unsigned)&TRISIO*8)+2;
+	volatile bit PWM_PIN @		((unsigned)&GPIO * 8) + 2;
+	volatile bit PWM_PIN_DDR @	((unsigned)&TRISIO * 8) + 2;
 #else
-	volatile bit PWM_PIN @ ((unsigned)&GPIO*8)+2;
-	volatile bit PWM_PIN_DDR @ ((unsigned)&TRISIO*8)+2;
+	volatile bit PWM_PIN @		((unsigned)&GPIO * 8) + 2;
+	volatile bit PWM_PIN_DDR @	((unsigned)&TRISIO * 8) + 2;
 #endif
 
 

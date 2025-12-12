@@ -58,13 +58,26 @@
 // dht11_mem[3] = byte Temp decimal part
 // dht11_mem[4] = checksum
 //******************************************************************************
+
 char dht11_mem[DHT11_RESPONSE_BYTES];
 
 
-//******************************************************************************
-// FUNCTION: char x1wDht11_get(void)
-// Recibe el paquete completo de la comunicación.
-//******************************************************************************
+
+ 
+/*******************************************************************************
+ * @brief Inicializa lo necesario antes de usar las funciones de esta libreria.
+ ******************************************************************************/
+
+ void x1wDht11_init(void) {
+ 	dht11_mem[0] = 1;	// Importante inicializacion para q si no hay sensor, no
+						// se quede con que el checksum es correcto (0 + 0 = 0).
+ }
+
+
+/*******************************************************************************
+ * @brief Recibe el paquete completo de la comunicación.
+ ******************************************************************************/
+
 char x1wDht11_get(void)
     {
     char i,j,res,pulseTicks;
@@ -123,5 +136,3 @@ char x1wDht11_get(void)
     return res;
     }
 
-
-	
