@@ -18,7 +18,10 @@
 
 extern char dht11_mem[DHT11_RESPONSE_BYTES];
 
-#define DHT_XX_CHECKSUM() (dht11_mem[0]+dht11_mem[2]==dht11_mem[4])
+// Checksum es la suma de los 4 bytes enviados, pero como el dht11 tiene las par
+// tes decimales = 0, entonces estas suman 0. Es el dht22 (creo) que envia los 4
+// bytes útiles.
+#define DHT_XX_CHECKSUM() (dht11_mem[0] + dht11_mem[2] == dht11_mem[4])
 
 
 
