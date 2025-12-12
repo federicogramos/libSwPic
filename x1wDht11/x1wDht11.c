@@ -63,6 +63,7 @@ char dht11_mem[DHT11_RESPONSE_BYTES];
 
 //******************************************************************************
 // FUNCTION: char x1wDht11_get(void)
+// Recibe el paquete completo de la comunicación.
 //******************************************************************************
 char x1wDht11_get(void)
     {
