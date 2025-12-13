@@ -25,7 +25,8 @@ int nCyclesDelay; // Delay aprox 0.5us por cada unidad de delay.
  ******************************************************************************/
 
 #define DHT11_RESPONSE_BYTES 5
-
+//#define DELAY_US_CALIBRATE_CONSTANT 4.595
+#define DELAY_US_CALIBRATE_CONSTANT 1.0
 
 /*******************************************************************************
  * @brief External declarations
@@ -46,10 +47,61 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 // bytes útiles.
 #define DHT_XX_CHECKSUM() (dht11_mem[0] + dht11_mem[2] == dht11_mem[4])
 
-// Ojo, dependiente de la frecuencia de funcionamiento: mejorar o hacerlo config
-//urable o poner una tabla con las escalas.
+
+/*******************************************************************************
+ * @brief Delay us
+ * 
+ * Formula real para pic12f683 @ fclk = 8Mhz:
+ * DELAY_US(n) = 1.92us + 4.28us * n
+ * 
+ * Ojo, dependiente de la frecuencia de funcionamiento: mejorar o hacerlo config
+ * urable o poner una tabla con las escalas.
+ * 
+ * Mediciones realizadas el 12-12-2025 para calibrarlo. Lo mejor es tomar 2 tand
+ * as: una con n bajo para el tFixed y otra con n grande para el proporcional.
+ * -- pic12f683 @ fclk = 8Mhz
+ * -- DELAY_US_CALIBRATE_CONSTANT = 1.0
+ * -- DELAY_US(1) = 6.2us
+ * -- DELAY_US(2) = 10.48us
+ * -- DELAY_US(3) = 14.96us
+ * 
+ * Calculos:
+ * -- tStep = 4.28us
+ * -- tFixed = 1.92us
+ * 
+ * Tabla para bajos valores de n, y luego cuando 1.92us * n >> 1.92us el tFixed 
+ * se hace despreciable.
+ * 
+ * -- pic12f683 @ fclk = 8Mhz
+ * -- DELAY_US_CALIBRATE_CONSTANT = 1.0
+ * -- DELAY_US(1000) = 4595us
+ * Se corrige la constante (despreciando el tiempo de asignación en el ciclo):
+ * 4595 [us] = 1000 / DELAY_US_CALIBRATE_CONSTANT
+ * DELAY_US_CALIBRATE_CONSTANT = 4595 / 1000 = 4.595
+ * Con esta calibración, he medido DELAY_US(1000) = 997.0us
+ * 
+ * Rutina usada para calibrar (deshabilitar irq, que no molesten). La diferencia
+ *  entre ambos pulsos+ indica el tiempo proporcional de cada incremento de n.
+ * 
+ * 	while(1) {
+ *		FLAG_START_COMM = 1;
+ *		DELAY_US(1); // time1
+ *		FLAG_START_COMM = 0;
+ *		DELAY_US(1);
+ *
+ *		FLAG_START_COMM = 1;
+ *		DELAY_US(2); // time2
+ *		FLAG_START_COMM = 0;
+ *		DELAY_US(2);
+ *	}
+ *
+ * time2 - time1 = step
+ * time1- step = timeFixed donde timeFixed es lo que la macro tarda en hacer cal
+ * culo de n / DELAY_US_CALIBRATE_CONSTANT tiempo q no se puede eliminar.
+ */
+
 #define DELAY_US(n) {                                                          \
-	nCyclesDelay = ((int) (n / 1.084375));                                     \
+	nCyclesDelay = ((int) (n / DELAY_US_CALIBRATE_CONSTANT));                  \
 	while(--nCyclesDelay);                                                     \
 	}
 
