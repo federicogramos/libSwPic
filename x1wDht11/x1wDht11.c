@@ -78,7 +78,9 @@ void x1wDht11_init(void) {
  *      low-voltage-level.
  * 6 -- bit end = hi. The length of the following high-voltage-level signal dete
  *      rmines whether data bit is "0" (26-28us) or "1" (70us).
- * 
+ *
+ *                          | order bits are sent:    |
+ *                          | msb first.. lsb last    |
  *                          |<---- 1 bit of data ---->|      |    last   |
  *                                  |<- 26-28us = 0 ->|      |<-- data ->|
  *                                  |<- 70us = 1 ---->|      |    bit    |
@@ -161,8 +163,7 @@ char x1wDht11_get(void) {
 				DHT11_WAIT_FP();
 
 				do {
-					//DELAY_US(10.5);
-					DELAY_US(DELAY_US_N_CORRECTION(10));
+					DELAY_US(10.5);
 					dataBitWidthMeasurement++;
 				} while(X1W_DHT11_PIN == 1);
 	
