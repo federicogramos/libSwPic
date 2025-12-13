@@ -101,11 +101,11 @@ char x1wDht11_get(void) {
 
 	// Communication step 1.
 	X1W_DHT11_OUTPUT_ZERO();
-	DELAY_US(18000); // 18ms.
+	DELAY_MS(18);
 
 	// Communication step 2.
 	X1W_INPUT_HI_Z();
-	DELAY_US(40); // 40us.
+	DELAY_US(40); // No necesita corrección.. no es tan tan bajo 40us.
 
 	// Communication step 3.
 	res = X1W_DHT11_PIN;
@@ -161,7 +161,8 @@ char x1wDht11_get(void) {
 				DHT11_WAIT_FP();
 
 				do {
-					DELAY_US(10.5);
+					//DELAY_US(10.5);
+					DELAY_US(DELAY_US_N_CORRECTION(10));
 					dataBitWidthMeasurement++;
 				} while(X1W_DHT11_PIN == 1);
 	

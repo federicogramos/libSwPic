@@ -25,8 +25,12 @@ int nCyclesDelay; // Delay aprox 0.5us por cada unidad de delay.
  ******************************************************************************/
 
 #define DHT11_RESPONSE_BYTES 5
-//#define DELAY_US_CALIBRATE_CONSTANT 4.595
-#define DELAY_US_CALIBRATE_CONSTANT 1.0
+#define DELAY_MS_PROPORTIONAL_CONSTANT 4595
+#define DELAY_US_OFFSET_TIME 2	// Si o si tiene que ser entero para que sea met
+								// ido en valor calculado en DELAY_US_N_CORRECTI
+								// ON() en tiempo de compilacion.
+#define DELAY_US_PROPORTIONAL_CONSTANT 4.595
+//#define DELAY_US_PROPORTIONAL_CONSTANT 1.0 // Just for calibration.
 
 /*******************************************************************************
  * @brief External declarations
@@ -49,7 +53,10 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 
 
 /*******************************************************************************
- * @brief Delay us
+ * @brief Delay us. Hay un valor minimo de argumento minimo para q tiempo ok.
+ * Cuidado: n > DELAY_US_PROPORTIONAL_CONSTANT
+ * Cuidado si se usa DELAY_US_N_CORRECTION() porque puede resultar el calculo un
+ * nro negativo.
  * 
  * Formula real para pic12f683 @ fclk = 8Mhz:
  * DELAY_US(n) = 1.92us + 4.28us * n
@@ -60,24 +67,24 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
  * Mediciones realizadas el 12-12-2025 para calibrarlo. Lo mejor es tomar 2 tand
  * as: una con n bajo para el tFixed y otra con n grande para el proporcional.
  * -- pic12f683 @ fclk = 8Mhz
- * -- DELAY_US_CALIBRATE_CONSTANT = 1.0
+ * -- DELAY_US_PROPORTIONAL_CONSTANT = 1.0
  * -- DELAY_US(1) = 6.2us
  * -- DELAY_US(2) = 10.48us
  * -- DELAY_US(3) = 14.96us
  * 
  * Calculos:
  * -- tStep = 4.28us
- * -- tFixed = 1.92us
+ * -- tFixed = 1.92us (DELAY_US_OFFSET_TIME)
  * 
  * Tabla para bajos valores de n, y luego cuando 1.92us * n >> 1.92us el tFixed 
  * se hace despreciable.
  * 
  * -- pic12f683 @ fclk = 8Mhz
- * -- DELAY_US_CALIBRATE_CONSTANT = 1.0
+ * -- DELAY_US_PROPORTIONAL_CONSTANT = 1.0
  * -- DELAY_US(1000) = 4595us
  * Se corrige la constante (despreciando el tiempo de asignación en el ciclo):
- * 4595 [us] = 1000 / DELAY_US_CALIBRATE_CONSTANT
- * DELAY_US_CALIBRATE_CONSTANT = 4595 / 1000 = 4.595
+ * 4595 [us] = 1000 / DELAY_US_PROPORTIONAL_CONSTANT
+ * DELAY_US_PROPORTIONAL_CONSTANT = 4595 / 1000 = 4.595
  * Con esta calibración, he medido DELAY_US(1000) = 997.0us
  * 
  * Rutina usada para calibrar (deshabilitar irq, que no molesten). La diferencia
@@ -97,11 +104,26 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
  *
  * time2 - time1 = step
  * time1- step = timeFixed donde timeFixed es lo que la macro tarda en hacer cal
- * culo de n / DELAY_US_CALIBRATE_CONSTANT tiempo q no se puede eliminar.
+ * culo de n / DELAY_US_PROPORTIONAL_CONSTANT tiempo q no se puede eliminar.
  */
 
 #define DELAY_US(n) {                                                          \
-	nCyclesDelay = ((int) (n / DELAY_US_CALIBRATE_CONSTANT));                  \
+	nCyclesDelay = ((int) (n / DELAY_US_PROPORTIONAL_CONSTANT));               \
+	while(--nCyclesDelay);                                                     \
+	}
+
+#define DELAY_US_N_CORRECTION(n) (n - DELAY_US_OFFSET_TIME)
+
+
+/*******************************************************************************
+ * @brief Delay ms
+ * 
+ * Basicamente igual que us pero con otra CALIBRATE_CONSTANT que ya desprecia el
+ * tFixed.
+ ******************************************************************************/
+
+#define DELAY_MS(n) {                                                          \
+	nCyclesDelay = ((int) (n / DELAY_MS_PROPORTIONAL_CONSTANT));               \
 	while(--nCyclesDelay);                                                     \
 	}
 
