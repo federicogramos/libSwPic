@@ -22,12 +22,14 @@
 /*******************************************************************************
  * @brief Port usage for keys
  * 20220923: esto esta configurado para proyecto "rpm".
+ * Ejemplo pic16f:
+ * volatile bit PULSADOR_0 @ ((unsigned)&PORTA * 8) + 0;
  ******************************************************************************/
 
-volatile bit PULSADOR_0 @ ((unsigned)&PORTA*8)+0;
-volatile bit PULSADOR_1 @ ((unsigned)&PORTA*8)+2;
-volatile bit PULSADOR_2 @ ((unsigned)&PORTA*8)+0;
-volatile bit PULSADOR_3 @ ((unsigned)&PORTE*8)+3;
+volatile bit PULSADOR_0 @ ((unsigned) &PORTA * 8) + 0;
+volatile bit PULSADOR_1 @ ((unsigned) &PORTA * 8) + 2;
+volatile bit PULSADOR_2 @ ((unsigned) &PORTA * 8) + 0;
+volatile bit PULSADOR_3 @ ((unsigned) &PORTE * 8) + 3;
 
 
 /*******************************************************************************
