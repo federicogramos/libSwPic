@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 
-#include <project.h>
+#include <projectHeader.h>
 #include <kPin.h>
 
 
