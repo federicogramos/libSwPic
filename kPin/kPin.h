@@ -10,74 +10,80 @@
 #define __K_PIN_H
 
 
-//==============================================================================
-// Nombres de pulsadores por parte del usuario.
-//==============================================================================
+/*******************************************************************************
+ * @brief Files user must define.
+ ******************************************************************************/
 
-#include <kPin_aliases.h>
+ #include <kPin_aliases.h> // Nombres de pulsadores por parte del usuario.
 
+ 
+/*******************************************************************************
+ * @brief Structures
+ * 
+ * No permite hacer arreglos de bitfields, por eso debo hacer estructura de bitf
+ * ield y luego un arreglo de esa estructura.
+ ******************************************************************************/
 
-//==============================================================================
-// Estructuras
-// No permite hacer arreglos de bitfields, por eso debo hacer estructura de
-// bitfield y luego un arreglo de esa estructura.
-//==============================================================================
+typedef struct {
+	unsigned char kId : 5;
+	unsigned char flag : 1;
+	unsigned char flanco : 1;
+	} t_kEvent;
 
-typedef struct
-    {
-    unsigned char kId : 5;
-    unsigned char flag : 1;
-    unsigned char flanco : 1;
-    } t_kEvent;
-
-typedef struct
-    {
-    unsigned char state : 1;
-    unsigned char prevState : 1;
-    unsigned char timer;
-    } t_kPin;
-
+typedef struct {
+	unsigned char state : 1;
+	unsigned char prevState : 1;
+	unsigned char timer;
+	} t_kPin;
 
 
-//==============================================================================
-// Pindef e inicialización de vector.
-//==============================================================================
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// TO-DO, esto acomodar:
 
-#include <kPin_pindef.h>
-
-
-//==============================================================================
-// Enum
-//==============================================================================
-
-enum e_flanco {FLANCO_N,FLANCO_P};
+#include <kPin_pindef.h> // Pindef e inicialización de vector.
 
 
-//==============================================================================
-// Globals
-//==============================================================================
+/*******************************************************************************
+ * @brief Constant definitions
+  ******************************************************************************/
+
+enum e_flanco { FLANCO_N, FLANCO_P };
+
+
+/*******************************************************************************
+ * @brief Extern references
+ ******************************************************************************/
 
 extern t_kEvent kPinBuffer;
 
 
-//==============================================================================
-// Macros
-//==============================================================================
+/*******************************************************************************
+ * @brief Macros
+ ******************************************************************************/
 
-#define KPIN_EVENT() (kPinBuffer.flag?!(kPinBuffer.flag=0):0)
-#define KPIN_GET_ID() (kPinBuffer.kId)
-#define KPIN_EVENT_ID(i) (kPinBuffer.flag && kPinBuffer.kId==i?!(kPinBuffer.flag=0):0)
-#define KPIN_EVENT_FP_ID(i) (kPinBuffer.flag && kPinBuffer.flanco==FLANCO_P && kPinBuffer.kId==i?!(kPinBuffer.flag=0):0)
-#define KPIN_EVENT_FN_ID(i) (kPinBuffer.flag && kPinBuffer.flanco==FLANCO_N && kPinBuffer.kId==i?!(kPinBuffer.flag=0):0)
+#define KPIN_EVENT() 		(kPinBuffer.flag? !(kPinBuffer.flag = 0) : 0)
+
+#define KPIN_GET_ID() 		(kPinBuffer.kId)
+
+#define KPIN_EVENT_ID(i)	(  kPinBuffer.flag                                 \
+							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
+
+#define KPIN_EVENT_FP_ID(i)	(  kPinBuffer.flag                                 \
+							&& kPinBuffer.flanco == FLANCO_P                   \
+							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
+
+#define KPIN_EVENT_FN_ID(i)	(kPinBuffer.flag                                   \
+							&& kPinBuffer.flanco == FLANCO_N                   \
+							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
 
 
-//==============================================================================
-// Prototipos
-//==============================================================================
+/*******************************************************************************
+ * @brief Function prototypes
+ ******************************************************************************/
 
 void kPin_driverDc(char pi, char kCurrLogState);
 void kPin_driverAcFn(char pi, char flanco, char kCurrLogState);
 void kPin_driverAcFp(char pi, char flanco, char kCurrLogState);
 
 
-#endif// __K_PIN_H
+#endif // __K_PIN_H
