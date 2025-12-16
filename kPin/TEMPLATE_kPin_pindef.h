@@ -22,6 +22,8 @@
 /*******************************************************************************
  * @brief Port usage for keys
  * 20220923: esto esta configurado para proyecto "rpm".
+ * Ejemplo pic12f:
+ * volatile bit PULSADOR_1 @ ((unsigned) &GPIO * 8) + 4;
  * Ejemplo pic16f:
  * volatile bit PULSADOR_0 @ ((unsigned)&PORTA * 8) + 0;
  ******************************************************************************/
