@@ -10,7 +10,7 @@
 //******************************************************************************
 
 
-#include <projectHeader.h>
+#include <project.h>
 #include <sys.h>
 #include <x1wDht11.h>
 #include <t0.h>
@@ -101,6 +101,19 @@ void x1wDht11_get(void) {
 									// os que da el dht11 tienen valor logico de
 									// 0 o 1 dependiendo del ancho.
 
+	// Deshabilita todas las interrupciones porque:
+	// -- los tiempos son justos, no quiero que me agarre dentro de una inte
+	//    rrupción cuando haga el flanco positivo (q señala q debo comenzar 
+	//    a medir el tiempo).
+	// -- por el momento, por como está implementado, no le da el tiempo par
+	//    a atenderlas y al mismo tiempo reconocer el estado logico segun 26
+	//    us vs 70us.
+	#if	defined(_12F683) // Compilacion condicional.
+		GIE = 0;
+	#else
+		INTCONbits.GIE = 0;
+	#endif
+
 	// Communication step 1.
 	X1W_DHT11_OUTPUT_ZERO();
 	DELAY_MS(18);
@@ -114,6 +127,7 @@ void x1wDht11_get(void) {
 	
 	if(res == 0) {
 
+
 		DHT11_WAIT_FP();	// Blocking. El step 3 finaliza cuando dht pulls-up 
 							// voltage.
 
@@ -124,39 +138,10 @@ void x1wDht11_get(void) {
 
 		// Communication step 5: ahora data = 0 durante 50us.
 
-		//TO-DO: creo que esto esta al pepe, porque adentro del loop ya hago el 
-		// mini "habilito deshabilito".
-		// Deshabilita todas las interrupciones porque:
-		// -- los tiempos son justos, no quiero que me agarre dentro de una inte
-		//    rrupción cuando haga el flanco positivo (q señala q debo comenzar 
-		//    a medir el tiempo).
-		// -- por el momento, por como está implementado, no le da el tiempo par
-		//    a atenderlas y al mismo tiempo reconocer el estado logico segun 26
-		//    us vs 70us.
-		#if	defined(_12F683) // Compilacion condicional.
-			GIE = 0;
-		#else
-			INTCONbits.GIE = 0;
-		#endif
-
 		for(i = 0; i < DHT11_RESPONSE_BYTES; i++) {
 			dht11_mem[i] = 0;
 			for(j = 0; j < 8; j++) {
 				dataBitWidthMeasurement = 0;
-
-				// -- Cuidado: tengo 50us para atender interrupciones. Si me pas
-				// o, se jode todo.
-				// -- Deshabilita todas las interrupciones porque por el momento
-				// por como está implementado, no le da el tiempo para atenderla
-				// s y al mismo tiempo reconocer el estado logico segun 26us vs 
-				// 70us.
-//				#if	defined(_12F683) // Compilacion condicional.
-//					GIE = 1;
-//					GIE = 0;
-//				#else
-//					INTCONbits.GIE = 1;
-//					INTCONbits.GIE = 0;
-//				#endif
 
 				// Step 6: busco el momento en el que 0 -> 1 para comenzar a med
 				// ir el ancho de pulso que me dará el valor lógico del bit.
@@ -170,12 +155,12 @@ void x1wDht11_get(void) {
 				if(dataBitWidthMeasurement > 3) dht11_mem[i] |= (0x80 >> j);
 			}
 		}
-
-		#if	defined(_12F683)
-			GIE = 1;
-		#else
-			INTCONbits.GIE = 1;
-		#endif
 	}
+
+	#if	defined(_12F683)
+		GIE = 1;
+	#else
+		INTCONbits.GIE = 1;
+	#endif
 }
 
