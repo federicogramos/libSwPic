@@ -168,7 +168,7 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 ////////////////////////////////////////////////////////#define X1_WIRE_BUFLEN 8
 
 
-char x1wDht11_get(void);
+void x1wDht11_get(void);
 void x1wDht11_init(void);
 
 

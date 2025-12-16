@@ -94,7 +94,7 @@ void x1wDht11_init(void) {
  * [0]   [1]  [2]  [3]  [4]  [5]
  ******************************************************************************/
 
-char x1wDht11_get(void) {
+void x1wDht11_get(void) {
 	char i, j, res;
 	char dataBitWidthMeasurement;	// Acumulador para medir el ancho de 1 bit e
 									// n el bus de comunicación. Los bits de dat
@@ -110,7 +110,7 @@ char x1wDht11_get(void) {
 	DELAY_US(40); // No necesita corrección.. no es tan tan bajo 40us.
 
 	// Communication step 3.
-	res = X1W_DHT11_PIN;
+	res = X1W_DHT11_PIN; // TO-DO ver si esto lo puedo meter directo en el if.
 	
 	if(res == 0) {
 
@@ -150,13 +150,13 @@ char x1wDht11_get(void) {
 				// por como está implementado, no le da el tiempo para atenderla
 				// s y al mismo tiempo reconocer el estado logico segun 26us vs 
 				// 70us.
-				#if	defined(_12F683) // Compilacion condicional.
-					GIE = 1;
-					GIE = 0;
-				#else
-					INTCONbits.GIE = 1;
-					INTCONbits.GIE = 0;
-				#endif
+//				#if	defined(_12F683) // Compilacion condicional.
+//					GIE = 1;
+//					GIE = 0;
+//				#else
+//					INTCONbits.GIE = 1;
+//					INTCONbits.GIE = 0;
+//				#endif
 
 				// Step 6: busco el momento en el que 0 -> 1 para comenzar a med
 				// ir el ancho de pulso que me dará el valor lógico del bit.
@@ -177,6 +177,5 @@ char x1wDht11_get(void) {
 			INTCONbits.GIE = 1;
 		#endif
 	}
-	return res;
 }
 

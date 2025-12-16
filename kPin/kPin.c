@@ -41,7 +41,7 @@ void kPin_driverDc(char pi, char kCurrLogState) {
 			// a mal (mucho tiempo para darme cuenta).
 			kPinBuffer.kId = pi;
 		}
-		else if(kPin[pi].state==FLANCO_N && kPin[pi].prevState==!FLANCO_N) {
+		else if(kPin[pi].state == FLANCO_N && kPin[pi].prevState == !FLANCO_N) {
 			kPinBuffer.flag = 1;
 			kPinBuffer.flanco = FLANCO_N;
 			kPin[pi].timer = KPIN__N_ANTIREBOTE;
