@@ -61,17 +61,22 @@ extern t_kEvent kPinBuffer;
  * @brief Macros
  ******************************************************************************/
 
+// Si ocurrió evento en un algun key (cualquiera de todos).
 #define KPIN_EVENT() 		(kPinBuffer.flag? !(kPinBuffer.flag = 0) : 0)
 
-#define KPIN_GET_ID() 		(kPinBuffer.kId)
+// Para el evento actual ocurrido, retorna el id del key.
+ #define KPIN_GET_ID() 		(kPinBuffer.kId)
 
+// Si ocurrió evento en un key específico (indicado).
 #define KPIN_EVENT_ID(i)	(  kPinBuffer.flag                                 \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
 
+// Si ocurrió evento de flanco positivo en un key específico (indicado).
 #define KPIN_EVENT_FP_ID(i)	(  kPinBuffer.flag                                 \
 							&& kPinBuffer.flanco == FLANCO_P                   \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
 
+// Si ocurrió evento de flanco negativo en un key específico (indicado).
 #define KPIN_EVENT_FN_ID(i)	(kPinBuffer.flag                                   \
 							&& kPinBuffer.flanco == FLANCO_N                   \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
