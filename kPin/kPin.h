@@ -67,16 +67,29 @@ extern t_kEvent kPinBuffer;
 // Para el evento actual ocurrido, retorna el id del key.
  #define KPIN_GET_ID() 		(kPinBuffer.kId)
 
-// Si ocurrió evento en un key específico (indicado).
+// Si ocurrió algún evento (flanco pos o neg) en un key específico (indicado).
 #define KPIN_EVENT_ID(i)	(  kPinBuffer.flag                                 \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
 
-// Si ocurrió evento de flanco positivo en un key específico (indicado).
+// Si se usa KPIN_EVENT() y se quiere distinguir el flanco, se puede leer asi.
+#define KPIN_GET_FLANCO() 	(kPinBuffer.flanco)
+
+// Si se usa KPIN_EVENT() y se quiere reconocer directo flanco pos/neg, se puede
+// directamente hacer el if() con el siguiente.
+#define KPIN_IS_FLANCO_P() 	(kPinBuffer.flanco == FLANCO_P)
+
+#define KPIN_IS_FLANCO_N() 	(kPinBuffer.flanco == FLANCO_N)
+
+// Si ocurrió evento de flanco negativo en un key específico (indicado). Los fla
+// ncos son expresados en terminos de cómo está conectado eléctricamente: positi
+// vo es 0V => VCC.
 #define KPIN_EVENT_FP_ID(i)	(  kPinBuffer.flag                                 \
 							&& kPinBuffer.flanco == FLANCO_P                   \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
 
-// Si ocurrió evento de flanco negativo en un key específico (indicado).
+// Si ocurrió evento de flanco negativo en un key específico (indicado). Los fla
+// ncos son expresados en terminos de cómo está conectado eléctricamente: negati
+// vo es VCC => 0V.
 #define KPIN_EVENT_FN_ID(i)	(kPinBuffer.flag                                   \
 							&& kPinBuffer.flanco == FLANCO_N                   \
 							&& kPinBuffer.kId == i? !(kPinBuffer.flag = 0) : 0)
