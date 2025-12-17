@@ -25,14 +25,14 @@
  ******************************************************************************/
 
 typedef struct {
-	unsigned char kId : 5;
-	unsigned char flag : 1;
-	unsigned char flanco : 1;
+	unsigned char kId		: 5;
+	unsigned char flag		: 1;
+	unsigned char flanco	: 1; // Driver escribe el tipo de flanco ocurrido.
 	} t_kEvent;
 
 typedef struct {
-	unsigned char state : 1;
-	unsigned char prevState : 1;
+	unsigned char state		: 1;
+	unsigned char prevState	: 1;
 	unsigned char timer;
 	} t_kPin;
 

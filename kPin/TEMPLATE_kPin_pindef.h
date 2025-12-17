@@ -38,16 +38,18 @@ volatile bit PULSADOR_3 @ ((unsigned) &PORTE * 8) + 3;
  * @brief Estructura principal pines. User debe completar segun pines usados.
  * 
  * La cantidad de elementos corresponde a la cantidad de pulsadores.
+ * Cada elemento => {state, prevState, timer}
+ * -- state = si usa pull-up => = 1
+ * -- prevstate = state (para que no arranque generando un pulso)
+ * -- timer = normalmente = 0 si quiere que empieze sin contar.
  ******************************************************************************/
 
-// {state,prevState,timer}
 t_kPin kPin[KPIN_CANT] = {
 	{ 1, 1, 0 },
     { 1, 1, 0 },
 	{ 1, 1, 0 },
 	{ 1, 1, 0 }
     };
-//*****************************************************************************
 
 
 #endif//__KPIN_PINDEF_H
