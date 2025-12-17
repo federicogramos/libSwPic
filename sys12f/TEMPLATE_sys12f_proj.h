@@ -9,6 +9,8 @@
  /******************************************************************************
  * @brief Puertos q se usan e identificación.
  * 
+ * Cuidado: mclr no puede ser output.
+ * 
  *                               +-----------+
  *                         VDD ==|    \_/    |== VSS
  *  GP5/T1CKI/OSC1/CLKIN [SW1] ==| PIC12F675 |== [IN_RAW] GP0/AN0/CIN+/ICSPDAT
