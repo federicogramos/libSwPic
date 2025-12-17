@@ -15,8 +15,7 @@
  * @brief Definiciones usuario.
  ******************************************************************************/
 
- type_t0DelayConstant t0DelayConstant[T0_CANT]=
-	{
+type_t0DelayConstant t0DelayConstant[T0_CANT] = {
 	40,
 	16,
 	8,
@@ -24,7 +23,7 @@
 	0,
 	1,
 	0//mem_tZero=000.0[ms] -> LEVANTA EL VALOR DESDE MEMORIA
-	};
+};
 
 
 #endif // __T0_DELAYS_H

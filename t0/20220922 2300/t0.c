@@ -15,22 +15,19 @@
  * Globals
  ******************************************************************************/
 
- t_t0 t0Mem[T0_CANT];
+t_t0 t0Mem[T0_CANT];
 
 
 /*******************************************************************************
  * @brief
  ******************************************************************************/
 
-void t0Driver(char i)
-   {
-   if(!t0Mem[i].pause && t0Mem[i].prescaler > 0)
-      {
-      t0Mem[i].prescaler--;
-      if(t0Mem[i].prescaler == 0)
-         {
-         t0Mem[i].flag = 1;
-         if(t0Mem[i].loop) t0Mem[i].prescaler = t0DelayConstant[i];
-         }
-      }
-   }
+void t0Driver(char i) {
+if(!t0Mem[i].pause && t0Mem[i].prescaler > 0) {
+	t0Mem[i].prescaler--;
+	if(t0Mem[i].prescaler == 0) {
+		t0Mem[i].flag = 1;
+		if(t0Mem[i].loop) t0Mem[i].prescaler = t0DelayConstant[i];
+		}
+	}
+}
