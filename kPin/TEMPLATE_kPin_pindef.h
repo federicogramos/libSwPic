@@ -12,8 +12,11 @@
 
 /*******************************************************************************
  * @brief Constants
- * Tirq 1ms => KPIN__N_ANTIREBOTE = 10
- * Tirq 100us => KPIN__N_ANTIREBOTE = 100
+ * 
+ * Tiempo de antirebote = 25ms es algo muy aceptable. Perceptiblemente nulo, y e
+ * n tiempo de rebote físico del mecanismo suficiente.
+ * Tirq 1ms => KPIN__N_ANTIREBOTE = 25
+ * Tirq 100us => KPIN__N_ANTIREBOTE = 250
  ******************************************************************************/
 
  #define KPIN__N_ANTIREBOTE 10
