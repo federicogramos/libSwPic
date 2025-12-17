@@ -9,7 +9,9 @@
  /******************************************************************************
  * @brief Puertos q se usan e identificación.
  * 
- * Cuidado: mclr no puede ser output.
+ * Cuidado mclr:
+ * -- no puede ser output.
+ * -- no dispone de pull-up como input.
  * 
  *                               +-----------+
  *                         VDD ==|    \_/    |== VSS
