@@ -164,3 +164,18 @@ void x1wDht11_get(void) {
 	#endif
 }
 
+
+/*******************************************************************************
+ * @brief Recibe el paquete completo de la comunicación y retorna segun checksum
+ * @return Resultado chequeo. 1|0 = ok|err.
+ * 
+ * Proceso de comunicación segun hoja de datos dht11: ver x1wDht11_get().
+ ******************************************************************************/
+
+char x1wDht11_get_checked(void) {
+
+	x1wDht11_get();
+
+	if(DHT_XX_CHECKSUM_OK()) return 1;
+	else return 0;
+}

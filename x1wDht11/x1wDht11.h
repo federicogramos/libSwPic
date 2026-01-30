@@ -47,15 +47,17 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 
 // Checksum es la suma de los 4 bytes enviados.
 // -- This is a "short checksum" not including zero bytes.
-// -- Dht11 tiene la parte decimal = 0 para la humedad.
+// -- Dht11 tiene la parte decimal = 0 para la humedad. Pero tener cuidado: he v
+//    isto marcdos como dht11 que son dht22.
 // -- Parte decimal de temperatura no es cero, sino que envia el dato.
 // -- Dht22 (creo) sí envia parte decimal de humedad.
-#define DHT_XX_CHECKSUM_023()	(dht11_mem[0] + dht11_mem[2] + dht11_mem[3]    \
-								== dht11_mem[4])
+#define DHT_XX_CHECKSUM_023_OK()	(dht11_mem[0] + dht11_mem[2]               \
+									+ dht11_mem[3] == dht11_mem[4])
 
 // This is a complete checksum.
-#define DHT_XX_CHECKSUM()		(dht11_mem[0] + dht11_mem[1] + dht11_mem[2]    \
-							 	+ dht11_mem[3] == dht11_mem[4])
+#define DHT_XX_CHECKSUM_OK()		(dht11_mem[0] + dht11_mem[1]               \
+									+ dht11_mem[2] + dht11_mem[3]              \
+									== dht11_mem[4])
 
 /*******************************************************************************
  * @brief Delay us. Usar para 45us en adelante. Por debajo, hay distorsion de t
@@ -169,6 +171,7 @@ extern char dht11_mem[DHT11_RESPONSE_BYTES];
 
 
 void x1wDht11_get(void);
+char x1wDht11_get_checked(void);
 void x1wDht11_init(void);
 
 
